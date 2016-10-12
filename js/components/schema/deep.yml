@@ -1,0 +1,67 @@
+%YAML 1.2
+---
+name: deep  # Required
+version: 1  # Required, must be positive integer >= 1
+table:
+  Deep:
+    deep_id: string
+    bib_ind_and_in_coll: string
+    title: string
+    title_alternative_keywords: string
+    pub_year: integer
+    pub_year_display': string
+    first_production_date': string
+    first_production_date_display: string
+    first_publish_date: string
+    record_type: string
+    theater_type: string
+    greg_number: string
+    stc_or_wing: string
+    stc_or_wing2: string
+    play_edition_number: string
+    book_edition_number: string
+    variant_description: string
+    edition: string
+    total_editions: integer
+    leaves: string
+    illustration_on_tp_or_frontis: string
+    sr_entries: string
+    format: string
+    additional_notes: string
+    transcript_title: string
+    transcript_author: string
+    transcript_performance: string
+    transcript_latin: string
+    transcript_imprint: string
+    transcript_explicit: string
+    transcript_colophon: string
+    transcript_dedication: string
+    transcript_commendatory_verses: string
+    transcript_to_the_reader: string
+    transcript_printed_license: string
+    transcript_general_title: string
+    transcript_woodcut: string
+    transcript_character_list: string
+    transcript_actor_list: string
+    transcript_argument: string
+    transcript_modern_spelling: string
+    display_play_type: string
+    display_authors: string
+    display_genre: string
+    display_booksellers: string
+    display_printers: string
+    display_publishers: string
+    display_companies: string
+    display_auspices: string
+    errata: string
+    imprintlocation: string
+  primaryKey: [ deep_id ]
+  index:
+    idxAuthor:
+      column: display_authors
+      order: asc
+      unique: false
+    idxPubYear:
+      column: pub_year
+      order: asc
+      unique: false

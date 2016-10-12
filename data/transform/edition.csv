@@ -1,0 +1,69 @@
+id,label
+0,Q1
+1,Q2
+2,Q3
+3,Q4
+4,Oc1
+5,F1
+6,Oc2
+7,Oc3
+8,Oc2 (bib indep)
+9,Q5
+10,Q6
+11,Q7
+12,Q8
+13,Q9
+14,Q10
+15,Q1 (bib indep)
+16,Q11
+17,Q12
+18,Q13
+19,Q14
+20,Q15
+21,Q16
+22,Duo1
+23,Q2 (bib indep)
+24,Broad1
+25,Broad2
+26,Q1 and Q2
+27,Duo2
+28,F2
+29,Duo3
+30,Duo4
+31,"coll, Q1"
+32,"coll, F1"
+33,"coll, Q2"
+34,"coll, Q3"
+35,3
+36,"coll, Oc1"
+37,"coll, Oc2"
+38,"coll, Oc3"
+39,"coll,Q1"
+40,16mo1
+41,"coll, 16mo1"
+42,"coll, Duo1"
+43,F3
+44,F4
+45,"coll, F2"
+46,F5
+47,"coll, F3"
+48,F6
+49,"coll, F4"
+50,F7
+51,"coll, F5"
+52,F8
+53,"coll, F6"
+54,F9
+55,"coll, F7"
+56,F10
+57,"coll, F8"
+58,F11
+59,"coll, F9"
+60,"coll, Q4"
+61,"coll, Q5"
+62,"coll, Q6"
+63,"coll, Duo2"
+64,"coll, Oct1"
+65,"coll, Oc1a"
+66,"coll, Oc1b"
+67,Duo/Oc1

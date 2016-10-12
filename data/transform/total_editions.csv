@@ -1,0 +1,106 @@
+id,label
+0,3 quartos
+1,4 quartos
+2,1 quarto
+3,1 octavo
+4,1 folio
+5,"1 folio, 3 quartos"
+6,"1 folio, 1 quarto"
+7,2 quartos
+8,"1 octavo, 1 quarto"
+9,"3 octavos, 1 quarto in collection"
+10,"1 octavo, 1 quarto in collection"
+11,"1 octavo, 1 octavo (bibliographically independent and in collection), 1 quarto (bibliographically independent and in collection)"
+12,"1 quarto, 1 quarto in collection"
+13,"3 quartos, 1 duodecimo in collection"
+14,"4 quartos, 1 duodecimo in collection"
+15,"3 octavos in collection, 1 quarto"
+16,"1 quarto, 1 duodecimo in collection"
+17,"1 quarto (bibliographically independent and in collection), 2 quartos in collection"
+18,"1 quarto in collection, 1 octavo"
+19,10 quartos
+20,"3 quartos, 2 folios in collection"
+21,5 quartos
+22,"2 quartos, 1 quarto in collection, 2 folios in collection"
+23,"4 quartos, 2 folios in collection"
+24,"2 quartos, 1 duodecimo in collection"
+25,"1 sixteenmo in collection, 3 octavos in collection, 2 duodecimos in collection, 1 folio in collection, 1 quarto in collection, 1 quarto (bibliographically independent and in collection)"
+26,"1 octavo, 1 quarto, 1 quarto in collection, 2 folios in collection"
+27,"6 quartos, 2 folios in collection"
+28,"8 quartos, 2 folios in collection"
+29,"5 quartos, 2 folios in collection"
+30,"9 quartos, 2 folios in collection"
+31,1 quarto (bibliographically independent and in collection)
+32,"2 quartos, 2 folios in collection"
+33,16 quartos
+34,"1 quarto, 2 folios in collection"
+35,6 quartos
+36,"1 quarto, 1 duodecimo"
+37,"1 quarto (bibliographically independent and in collection), 1 octavo in collection"
+38,7 quartos
+39,"1 quarto, 1 quarto (bibliographically independent and in collection), 1 octavo in collection, 1 folio in collection"
+40,"1 quarto (bibliographically independent and in collection), 2 quartos"
+41,9 quartos
+42,"1 quarto, 1 octavo, 1 quarto in collection"
+43,2 broadsheet editions
+44,8 quartos
+45,"1 octavo (bibliographically independent and in collection), 2 duodecimos in collection, 1 quarto in collection"
+46,"1 quarto, 1 octavo in collection, 1 duodecimo in collection, 1 quarto in collection"
+47,"1 quarto (bibliographically independent and in collection), 1 quarto, 1 octavo in collection"
+48,"5 quartos, 1 octavo"
+49,"1 quarto (bibliographically independent and in collection), 1 quarto"
+50,"1 quarto, 1 folio in collection"
+51,"5 quartos, 1 quarto in collection"
+52,"1 quarto, 1 folio in collection, 1 octavo in collection"
+53,"1 quarto, 1 folio in collectionl"
+54,"1 octavo, 1 octavo in collection"
+55,"1 quarto, 1 octavo"
+56,1 folio (bibliographically independent and in collection)
+57,"1 quarto, 1 octavo in collection"
+58,"1 folio in collection, 1 folio (bibliographically independent and in collection)"
+59,"2 quartos, 2 octavos (bibliographically independent and in collection), 1 octavo in collection"
+60,"1 quarto, 3 octavos in collection"
+61,2 duodecimos
+62,2 folios
+63,"1 quarto, 1 folio"
+64,"1 folio, 2 octavos (bibliographically independent and in collection), 1 octavo in collection"
+65,1 duodecimo (bibliographically independent and in collection)
+66,"3 quartos, 1 octavo"
+67,"1 folio, 1 edition issued in both quarto (in collection) and octavo (single-play playbook)"
+68,"2 quartos, 1 octavo in collection"
+69,1 duodecimo
+70,"1 quarto, 2 octavos (bibliographically independent and in collection), 1 octavo in collection"
+71,1 octavo (bibliographically independent and in collection)
+72,"2 octavos (bibliographically independent and in collection), 1 octavo in collection"
+73,"1 quarto (bibliographically independent and in collection), 1 edition issued in both quarto (bibliographically independent and in collection) and octavo"
+74,1 edition issued in both quarto and octavo (bibliographically independent and in collection)
+75,1 duodecimino
+76,4 duodecimos
+77,"1 duodecimo, 1 octavo"
+78,1 quarto in collection
+79,1 folio in collection
+80,2 quartos in collection
+81,3 quartos in collection
+82,"2 octavos, 1 quarto"
+83,3 octavos
+84,1 octavo in collection
+85,"1 sixteenmo, 1 octavo, 1 duodecimo"
+86,11 folios
+87,9 folios in collection
+88,6 quartos in collection
+89,"1 quarto in collection, 2 folios in collection"
+90,"1 quarto in collection, 1 octavo in collection, 1 folio in collection"
+91,"2 octavos, 1 duodecimo"
+92,2 folios in collection
+93,"6 quartos in collection, 1 octavo in collection"
+94,1 quarto in two different collections
+95,"1 quarto, 3 octavos"
+96,"1 quarto in collection, 3 octavos in collection"
+97,"6 quartos, 1 octavo in collection"
+98,1 duodecimo in collection
+99,"1 duodecimo in collection, 1 folio in collection"
+100,"2 octavos (bib indep), 3 octavos in collection"
+101,1 edition issued in both quarto and octavo
+102,1 edition in collection (issued in both quarto and octavo)
+103,1 edition in both quarto and octavo
+104,1 Octavo

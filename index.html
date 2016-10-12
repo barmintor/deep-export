@@ -5,89 +5,73 @@
     <title>Demo using PapaParse, Lovefield, csv data</title>
     <script src="js/papaparse-4.1/papaparse.min.js"></script>
     <script src="js/lovefield-2.1.10/lovefield.min.js"></script>
+    <script src="js/angular-1.3.10/angular.min.js"></script>
+    <script src="js/d3-3/d3.min.js"></script>
+    <script src="js/components/lovefield_service.js"></script>
+    <script type="text/javascript" src="js/components/data_fetcher.js"></script>
+    <script type="text/javascript" src="js/components/graph_plotter.js"></script>
+    <script type="text/javascript" src="js/components/fetcher_service.js"></script>
+    <script type="text/javascript" src="js/components/query_builder_controller.js"></script>
+    <script type="text/javascript" src="js/components/main.js"></script>
+    <style type="text/css">
+      TH {text-align: left;}
+      TH.pub_year, TD.pub_year {width:15%;}
+      TH.display_authors, TD.display_authors {width:40%;}
+      TH.title, TD.title {width:45%;}
+    </style>
   </head>
-  <body>
-    <script>
-var schemaBuilder = lf.schema.create('deep', 1);
 
-schemaBuilder.createTable('Deep').
-    addColumn('deep_id', lf.Type.STRING).
-    addColumn('bib_ind_and_in_coll', lf.Type.STRING).
-    addColumn('title', lf.Type.STRING).
-    addColumn('title_alternative_keywords').
-    addColumn('pub_year', lf.Type.INTEGER).
-    addColumn('pub_year_display', lf.Type.STRING).
-    addColumn('first_production_date', lf.Type.STRING).
-    addColumn('first_production_date_display', lf.Type.STRING).
-    addColumn('first_publish_date', lf.Type.STRING).
-    addColumn('record_type', lf.Type.STRING).
-    addColumn('theater_type', lf.Type.STRING).
-    addColumn('greg_number', lf.Type.STRING).
-    addColumn('stc_or_wing', lf.Type.STRING).
-    addColumn('stc_or_wing2', lf.Type.STRING).
-    addColumn('play_edition_number', lf.Type.STRING).
-    addColumn('book_edition_number', lf.Type.STRING).
-    addColumn('variant_description', lf.Type.STRING).
-    addColumn('edition', lf.Type.STRING).
-    addColumn('total_editions', lf.Type.INTEGER).
-    addColumn('leaves', lf.Type.STRING).
-    addColumn('illustration_on_tp_or_frontis', lf.Type.STRING).
-    addColumn('sr_entries', lf.Type.STRING).
-    addColumn('format', lf.Type.STRING).
-    addColumn('additional_notes', lf.Type.STRING).
-    addColumn('transcript_title', lf.Type.STRING).
-    addColumn('transcript_author', lf.Type.STRING).
-    addColumn('transcript_performance', lf.Type.STRING).
-    addColumn('transcript_latin', lf.Type.STRING).
-    addColumn('transcript_imprint', lf.Type.STRING).
-    addColumn('transcript_explicit', lf.Type.STRING).
-    addColumn('transcript_colophon', lf.Type.STRING).
-    addColumn('transcript_dedication', lf.Type.STRING).
-    addColumn('transcript_commendatory_verses', lf.Type.STRING).
-    addColumn('transcript_to_the_reader', lf.Type.STRING).
-    addColumn('transcript_printed_license', lf.Type.STRING).
-    addColumn('transcript_general_title', lf.Type.STRING).
-    addColumn('transcript_woodcut', lf.Type.STRING).
-    addColumn('transcript_character_list', lf.Type.STRING).
-    addColumn('transcript_actor_list', lf.Type.STRING).
-    addColumn('transcript_argument', lf.Type.STRING).
-    addColumn('transcript_modern_spelling', lf.Type.STRING).
-    addColumn('display_play_type', lf.Type.STRING).
-    addColumn('display_authors', lf.Type.STRING).
-    addColumn('display_genre', lf.Type.STRING).
-    addColumn('display_booksellers', lf.Type.STRING).
-    addColumn('display_printers', lf.Type.STRING).
-    addColumn('display_publishers', lf.Type.STRING).
-    addColumn('display_companies', lf.Type.STRING).
-    addColumn('display_auspices', lf.Type.STRING).
-    addColumn('errata', lf.Type.STRING).
-    addColumn('imprintlocation', lf.Type.STRING).
-    addPrimaryKey(['deep_id']).
-    addIndex('idxPubYear', ['pub_year'], false, lf.Order.ASC);
+  <body ng-app="deepApp" ng-controller="QueryBuilderController as queryBuilder">
+    <div  id="query-builder">
+      <form novalidate>
+        <div class="form-group" ng-repeat="filter in filters">
+          <label>Search for:
+            <select class="form-control" ng-model="filter.queryType"
+                ng-init="filter.queryType = filter.queryType ? filter.queryType : '';"
+                ng-change="filter.onQueryTypeChanged();"
+                ng-options="item for item in queryBuilder.queryLabels()">
+              <option value="">[Any Field]</option>
+            </select>
+          </label>
 
-var deep;
-schemaBuilder.connect().then(function(db) {
-  todoDb = db;
-  deep = db.getSchema().table('Deep');
-  Papa.parse("data/deep-export.csv", {
-    download: true,
-    header: true,
-    skipEmptyLines: true,
-    // step function requires HTTP1.1 chunk support
-    complete: function(results) {
-      console.log(results.data.length);
-      for (var i=0;i<results.data.length;i++) {
-        var result = results.data[i];
-        console.log(result);
-        var row = deep.createRow(result);
-        db.insertOrReplace().into(deep).values([row]).exec();
-      }
-      console.log("All done!");
-    }
-  });
-  return 
-});
-
-    </script>
+          <label>Select {{filters[$index].queryType}}
+            <select class="form-control"
+                ng-model="filter.itemSelection"
+                ng-init="filter.itemSelection = null;"
+                ng-change="queryBuilder.search();"
+                ng-options="item for item in filter.dropDownList"
+                ng-show="filter.query().type() == 'List'">
+              <option value="">[Any]</option>
+            </select>
+            <input class="form-control" type="text" value=""
+                ng-model="filter.itemSelection"
+                ng-init="filter.itemSelection"
+                ng-change="queryBuilder.search();"
+                ng-model-options="{ debounce: 350 }"
+                ng-show="filter.query().type() == 'Text'" />
+          </label>
+        </div>
+        <input type="button" value="add field" ng-click="queryBuilder.addFilter()" />
+      </form>
+    </div>
+    <div id="row-container" style="margin-top: 50px;" ng-model="rows">
+      <table>
+        <caption ng-show="rows">Search Results: {{rows.length}} records</caption>
+        <thead ng-show="rows.length">
+          <tr>
+            <th class="index"></th>
+            <th class="pub_year" ng-click="queryBuilder.orderBy('pub_year')">Year</th>
+            <th class="display_authors" ng-click="queryBuilder.orderBy('display_authors')">Author</th>
+            <th class="title" ng-click="queryBuilder.orderBy('title')">Title</th>
+          </tr>
+        </thead>
+        <tr ng-repeat="row in rows">
+          <td class="index">{{$index + 1}}</td>
+          <td class="pub_year">{{row.pub_year_display}}</td>
+          <td class="display_authors">{{row.display_authors}}</td>
+          <td class="title">{{row.title}}</td>
+        </tr>
+      </table>
+    </div>
   </body>
 </html>
