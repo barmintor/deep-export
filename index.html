@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Demo using PapaParse, Lovefield, csv data</title>
+    <script src="js/papaparse-4.1/papaparse.min.js"></script>
+    <script src="js/lovefield-2.1.10/lovefield.min.js"></script>
+  </head>
+  <body>
+    <script>
+var schemaBuilder = lf.schema.create('deep', 1);
+
+schemaBuilder.createTable('Deep').
+    addColumn('deep_id', lf.Type.STRING).
+    addColumn('bib_ind_and_in_coll', lf.Type.STRING).
+    addColumn('title', lf.Type.STRING).
+    addColumn('title_alternative_keywords').
+    addColumn('pub_year', lf.Type.INTEGER).
+    addColumn('pub_year_display', lf.Type.STRING).
+    addColumn('first_production_date', lf.Type.STRING).
+    addColumn('first_production_date_display', lf.Type.STRING).
+    addColumn('first_publish_date', lf.Type.STRING).
+    addColumn('record_type', lf.Type.STRING).
+    addColumn('theater_type', lf.Type.STRING).
+    addColumn('greg_number', lf.Type.STRING).
+    addColumn('stc_or_wing', lf.Type.STRING).
+    addColumn('stc_or_wing2', lf.Type.STRING).
+    addColumn('play_edition_number', lf.Type.STRING).
+    addColumn('book_edition_number', lf.Type.STRING).
+    addColumn('variant_description', lf.Type.STRING).
+    addColumn('edition', lf.Type.STRING).
+    addColumn('total_editions', lf.Type.INTEGER).
+    addColumn('leaves', lf.Type.STRING).
+    addColumn('illustration_on_tp_or_frontis', lf.Type.STRING).
+    addColumn('sr_entries', lf.Type.STRING).
+    addColumn('format', lf.Type.STRING).
+    addColumn('additional_notes', lf.Type.STRING).
+    addColumn('transcript_title', lf.Type.STRING).
+    addColumn('transcript_author', lf.Type.STRING).
+    addColumn('transcript_performance', lf.Type.STRING).
+    addColumn('transcript_latin', lf.Type.STRING).
+    addColumn('transcript_imprint', lf.Type.STRING).
+    addColumn('transcript_explicit', lf.Type.STRING).
+    addColumn('transcript_colophon', lf.Type.STRING).
+    addColumn('transcript_dedication', lf.Type.STRING).
+    addColumn('transcript_commendatory_verses', lf.Type.STRING).
+    addColumn('transcript_to_the_reader', lf.Type.STRING).
+    addColumn('transcript_printed_license', lf.Type.STRING).
+    addColumn('transcript_general_title', lf.Type.STRING).
+    addColumn('transcript_woodcut', lf.Type.STRING).
+    addColumn('transcript_character_list', lf.Type.STRING).
+    addColumn('transcript_actor_list', lf.Type.STRING).
+    addColumn('transcript_argument', lf.Type.STRING).
+    addColumn('transcript_modern_spelling', lf.Type.STRING).
+    addColumn('display_play_type', lf.Type.STRING).
+    addColumn('display_authors', lf.Type.STRING).
+    addColumn('display_genre', lf.Type.STRING).
+    addColumn('display_booksellers', lf.Type.STRING).
+    addColumn('display_printers', lf.Type.STRING).
+    addColumn('display_publishers', lf.Type.STRING).
+    addColumn('display_companies', lf.Type.STRING).
+    addColumn('display_auspices', lf.Type.STRING).
+    addColumn('errata', lf.Type.STRING).
+    addColumn('imprintlocation', lf.Type.STRING).
+    addPrimaryKey(['deep_id']).
+    addIndex('idxPubYear', ['pub_year'], false, lf.Order.ASC);
+
+var deep;
+schemaBuilder.connect().then(function(db) {
+  todoDb = db;
+  deep = db.getSchema().table('Deep');
+  Papa.parse("data/deep-export.csv", {
+    download: true,
+    header: true,
+    skipEmptyLines: true,
+    // step function requires HTTP1.1 chunk support
+    complete: function(results) {
+      console.log(results.data.length);
+      for (var i=0;i<results.data.length;i++) {
+        var result = results.data[i];
+        console.log(result);
+        var row = deep.createRow(result);
+        db.insertOrReplace().into(deep).values([row]).exec();
+      }
+      console.log("All done!");
+    }
+  });
+  return 
+});
+
+    </script>
+  </body>
+</html>
